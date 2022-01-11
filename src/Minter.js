@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import {
   connectWallet,
   getCurrentWalletConnected,
   mintNFT,
-} from "./util/interact.js";
+} from './util/interact.js';
 
 const Minter = (props) => {
-  const [walletAddress, setWallet] = useState("");
-  const [status, setStatus] = useState("");
+  const [walletAddress, setWallet] = useState('');
+  const [status, setStatus] = useState('');
 
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [url, setURL] = useState("");
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [url, setURL] = useState('');
 
   useEffect(async () => {
     const { address, status } = await getCurrentWalletConnected();
@@ -24,20 +24,20 @@ const Minter = (props) => {
 
   function addWalletListener() {
     if (window.ethereum) {
-      window.ethereum.on("accountsChanged", (accounts) => {
+      window.ethereum.on('accountsChanged', (accounts) => {
         if (accounts.length > 0) {
           setWallet(accounts[0]);
-          setStatus("👆🏽 Write a message in the text-field above.");
+          setStatus('👆🏽 Write a message in the text-field above.');
         } else {
-          setWallet("");
-          setStatus("🦊 Connect to Metamask using the top right button.");
+          setWallet('');
+          setStatus('🦊 Connect to Metamask using the top right button.');
         }
       });
     } else {
       setStatus(
         <p>
-          {" "}
-          🦊{" "}
+          {' '}
+          🦊{' '}
           <a target="_blank" href={`https://metamask.io/download.html`}>
             You must install Metamask, a virtual Ethereum wallet, in your
             browser.
@@ -57,9 +57,9 @@ const Minter = (props) => {
     const { success, status } = await mintNFT(url, name, description);
     setStatus(status);
     if (success) {
-      setName("");
-      setDescription("");
-      setURL("");
+      setName('');
+      setDescription('');
+      setURL('');
     }
   };
 
@@ -67,46 +67,42 @@ const Minter = (props) => {
     <div className="Minter">
       <button id="walletButton" onClick={connectWalletPressed}>
         {walletAddress.length > 0 ? (
-          "Connected: " +
+          'Connected Wallet: ' +
           String(walletAddress).substring(0, 6) +
-          "..." +
+          '...' +
           String(walletAddress).substring(38)
         ) : (
           <span>Connect Wallet</span>
         )}
       </button>
-
       <br></br>
-      <h1 id="title">🧙‍♂️ Alchemy NFT Minter</h1>
-      <p>
-        Simply add your asset's link, name, and description, then press "Mint."
-      </p>
-      <form>
-        <h2>🖼 Link to asset: </h2>
+      <h1 id="title">RinkArby NFT Minter</h1>
+      <form className="form">
+        <h2>🌄 Add IPFS Address: </h2>
         <input
           type="text"
-          placeholder="e.g. https://gateway.pinata.cloud/ipfs/<hash>"
+          placeholder="Use an IPFS Address"
           onChange={(event) => setURL(event.target.value)}
         />
-        <h2>🤔 Name: </h2>
+        <h2>💬 Name: </h2>
         <input
           type="text"
-          placeholder="e.g. My first NFT!"
+          placeholder="Name of this NFT"
           onChange={(event) => setName(event.target.value)}
         />
         <h2>✍️ Description: </h2>
         <input
           type="text"
-          placeholder="e.g. Even cooler than cryptokitties ;)"
+          placeholder="A brief description of this NFT"
           onChange={(event) => setDescription(event.target.value)}
         />
+        <button id="mintButton" onClick={onMintPressed}>
+          CREATE NFT
+        </button>
+        <p id="status" style={{ color: 'red' }}>
+          {status}
+        </p>
       </form>
-      <button id="mintButton" onClick={onMintPressed}>
-        Mint NFT
-      </button>
-      <p id="status" style={{ color: "red" }}>
-        {status}
-      </p>
     </div>
   );
 };
