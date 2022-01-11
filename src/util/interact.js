@@ -92,9 +92,9 @@ export const getCurrentWalletConnected = async () => {
   }
 };
 
-async function loadContract() {
-  return new web3.eth.Contract(contractABI, contractAddress);
-}
+// async function loadContract() {
+//   return new web3.eth.Contract(contractABI, contractAddress);
+// }
 
 export const mintNFT = async (url, name, description) => {
   if (url.trim() === '' || name.trim() === '' || description.trim() === '') {
@@ -105,7 +105,7 @@ export const mintNFT = async (url, name, description) => {
   }
 
   //make metadata
-  const metadata = new Object();
+  const metadata = {};
   metadata.name = name;
   metadata.image = url;
   metadata.description = description;

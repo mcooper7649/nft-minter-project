@@ -38,11 +38,7 @@ const Minter = (props) => {
         <p>
           {' '}
           🦊{' '}
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href={`https://metamask.io/download.html`}
-          >
+          <a target="_blank" href={`https://metamask.io/download.html`}>
             You must install Metamask, a virtual Ethereum wallet, in your
             browser.
           </a>
@@ -57,7 +53,8 @@ const Minter = (props) => {
     setWallet(walletResponse.address);
   };
 
-  const onMintPressed = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const { success, status } = await mintNFT(url, name, description);
     setStatus(status);
     if (success) {
@@ -69,46 +66,55 @@ const Minter = (props) => {
 
   return (
     <div className="Minter">
-      <div>
-        <button id="walletButton" onClick={connectWalletPressed}>
-          {walletAddress.length > 0 ? (
-            'Connected Wallet: ' +
-            String(walletAddress).substring(0, 6) +
-            '...' +
-            String(walletAddress).substring(38)
-          ) : (
-            <span>Connect Wallet</span>
-          )}
-        </button>
-      </div>
-      <form className="form">
-        <h1 id="title">RinkArby NFT Minter</h1>
+      <button id="walletButton" onClick={connectWalletPressed}>
+        {walletAddress.length > 0 ? (
+          'Connected: ' +
+          String(walletAddress).substring(0, 6) +
+          '...' +
+          String(walletAddress).substring(38)
+        ) : (
+          <span>Connect Wallet</span>
+        )}
+      </button>
 
-        <h2>💬 Name: </h2>
+      <br></br>
+      <h1 id="title">🧙‍♂️ Rinkeby NFT Minter</h1>
+      <p>
+        Simply add your NFT's name, description and an IPFS link and press 'MINT
+        NFT'.
+      </p>
+      <form className="form" onSubmit={handleSubmit}>
+        <h2>🖼 Link to asset: </h2>
         <input
           type="text"
-          placeholder="Name of this NFT"
+          placeholder="URL to IPFS"
+          onChange={(event) => setURL(event.target.value)}
+        />
+        <h2>🤔 Name: </h2>
+        <input
+          type="text"
+          placeholder="e.g. My first NFT!"
           onChange={(event) => setName(event.target.value)}
         />
         <h2>✍️ Description: </h2>
         <input
           type="text"
-          placeholder="A brief description of this NFT"
+          placeholder="e.g. Even cooler than cryptokitties ;)"
           onChange={(event) => setDescription(event.target.value)}
         />
-        <h2>🌄 Add IPFS Address: </h2>
-        <input
-          type="text"
-          placeholder="Use an IPFS Address"
-          onChange={(event) => setURL(event.target.value)}
-        />
-        <button id="mintButton" onClick={onMintPressed}>
-          CREATE NFT
-        </button>
-        <p id="status" style={{ color: 'red' }}>
+        <p id="status" style={{ color: 'black' }}>
           {status}
         </p>
+        <button id="mintButton" type="submit">
+          Mint NFT
+        </button>
       </form>
+      <p className="mcd">
+        <a className="mycodedojo" href="http://www.mycodedojo.com">
+          {' '}
+          Made by a 🥷 MyCodeDojo
+        </a>
+      </p>
     </div>
   );
 };

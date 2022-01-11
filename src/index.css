@@ -9,7 +9,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 150% 150%;
+  background-size: 200% 200%;
   animation: gradient 5s ease infinite;
 }
 
@@ -23,7 +23,7 @@ code {
   max-height: 80vh;
   padding: 60px 100px;
   margin: 0 auto;
-  text-align: left;
+  /* text-align: left; */
 }
 
 input {
@@ -195,4 +195,10 @@ button:hover {
   100% {
     background-position: 0% 50%;
   }
+}
+
+.mycodedojo {
+  text-decoration: none;
+  font-size: large;
+  padding: 40px 0 20px 0px;
 }
