@@ -65,25 +65,21 @@ const Minter = (props) => {
 
   return (
     <div className="Minter">
-      <button id="walletButton" onClick={connectWalletPressed}>
-        {walletAddress.length > 0 ? (
-          'Connected Wallet: ' +
-          String(walletAddress).substring(0, 6) +
-          '...' +
-          String(walletAddress).substring(38)
-        ) : (
-          <span>Connect Wallet</span>
-        )}
-      </button>
-      <br></br>
-      <h1 id="title">RinkArby NFT Minter</h1>
+      <div>
+        <button id="walletButton" onClick={connectWalletPressed}>
+          {walletAddress.length > 0 ? (
+            'Connected Wallet: ' +
+            String(walletAddress).substring(0, 6) +
+            '...' +
+            String(walletAddress).substring(38)
+          ) : (
+            <span>Connect Wallet</span>
+          )}
+        </button>
+      </div>
       <form className="form">
-        <h2>🌄 Add IPFS Address: </h2>
-        <input
-          type="text"
-          placeholder="Use an IPFS Address"
-          onChange={(event) => setURL(event.target.value)}
-        />
+        <h1 id="title">RinkArby NFT Minter</h1>
+
         <h2>💬 Name: </h2>
         <input
           type="text"
@@ -95,6 +91,12 @@ const Minter = (props) => {
           type="text"
           placeholder="A brief description of this NFT"
           onChange={(event) => setDescription(event.target.value)}
+        />
+        <h2>🌄 Add IPFS Address: </h2>
+        <input
+          type="text"
+          placeholder="Use an IPFS Address"
+          onChange={(event) => setURL(event.target.value)}
         />
         <button id="mintButton" onClick={onMintPressed}>
           CREATE NFT
