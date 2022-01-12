@@ -18,6 +18,18 @@ code {
     monospace;
 }
 
+h4 {
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+.copyright {
+  padding: 20px;
+}
+
 .Minter {
   max-width: 80vh;
   max-height: 80vh;
