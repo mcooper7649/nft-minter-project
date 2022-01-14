@@ -112,7 +112,7 @@ const Minter = (props) => {
           placeholder="e.g. https://gateway.pinata.cloud/ipfs/<hash>"
           onChange={(event) => setURL(event.target.value)}
         />
-        <button id="mintButton" type="submit">
+        <button id="mintButton" className="neonShadow" type="submit">
           Mint NFT
         </button>
       </form>
