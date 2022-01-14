@@ -133,7 +133,7 @@ button:hover {
   position: relative;
   z-index: 1;
   box-shadow: 10px 3px 3px #3a506b;
-  background: #e9bcbc;
+  background: #e9bcbc60;
   max-width: 360px;
   margin: 0 auto 50px;
   padding: 45px;
