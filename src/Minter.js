@@ -85,10 +85,10 @@ const Minter = (props) => {
         Simply add your asset's link, name, and description, then press "Mint."
       </p>
       <form className="form" onSubmit={handleSubmit}>
-        <h4>{status}</h4>
+        <h3>{status}</h3>
 
         <h2>
-          <i class="fas fa-file-signature"></i> Name:{' '}
+          <i className="fas fa-file-signature"></i> Name:{' '}
         </h2>
         <input
           type="text"
@@ -104,7 +104,7 @@ const Minter = (props) => {
           onChange={(event) => setDescription(event.target.value)}
         />
         <h2>
-          <i class="far fa-image"></i> Link to asset:{' '}
+          <i className="far fa-image"></i> Link to asset:{' '}
         </h2>
         <input
           type="text"
@@ -116,9 +116,10 @@ const Minter = (props) => {
         </button>
       </form>
 
-      <p class="copyright">
-        Crafted by a <i class="fas fa-user-ninja fa-2x" aria-hidden="true"></i>
-        <a href="http://www.mycodedojo.com"> © 2021 MyCodeDojo</a>
+      <p className="copyright">
+        Crafted by a{' '}
+        <i className="fas fa-user-ninja fa-2x" aria-hidden="true"></i>
+        <a href="http://www.mycodedojo.com"> from MyCodeDojo</a>
       </p>
     </div>
   );

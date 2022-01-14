@@ -13,7 +13,7 @@ export const connectWallet = async () => {
         method: 'eth_requestAccounts',
       });
       const obj = {
-        status: '👇 Write a message in the text-field below.',
+        status: '👇 Update your NFT information 👇',
         address: addressArray[0],
       };
       return obj;
@@ -55,7 +55,7 @@ export const getCurrentWalletConnected = async () => {
       if (addressArray.length > 0) {
         return {
           address: addressArray[0],
-          status: '👇 Write a message in the text-field below.',
+          status: '👇 Update your NFT information 👇',
         };
       } else {
         return {
