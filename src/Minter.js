@@ -80,10 +80,11 @@ const Minter = (props) => {
       </button>
 
       <br></br>
-      <h1 id="title">🧙‍♂️ Alchemy NFT Minter</h1>
-      <p>
-        Simply add your asset's link, name, and description, then press "Mint."
-      </p>
+      <h1 id="title">Ropsten NFT ⚡️Minter⚡️</h1>
+      <h4>
+        Confirm your wallet is on Ethereums Ropsten test network, add your NFT
+        name, description and IPFS address, then press "Mint NFT."
+      </h4>
       <form className="form" onSubmit={handleSubmit}>
         <h3>{status}</h3>
 
